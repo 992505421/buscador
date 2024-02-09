@@ -4,12 +4,22 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 11%, rgba(128, 81, 179, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    background-image: url(img/fundo.png);
+    background-position: center;
+    background-color: #333974;
+    color: #FFF;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+
 }
 
 .title {
     font-size: 85px;
-    color: azure;
+    color: #FFF;
+    border-radius: 3px;
+    box-sizing: border-box;
     animation: flipTitle 3s;
 }
 
@@ -21,4 +31,68 @@
     to {
         transform: rotatex(0deg);
     }
+}
+.container-form{
+    background-color: rgba(69,34,105,0.5 );
+    padding: 15px;
+    margin: 34px;
+    border-radius: 15px;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+}
+.containerInput {
+    background-color: rgba(69,34,105,0.5 );
+    padding: 15px;
+    margin: 34px;
+    border-radius: 15px;
+    cursor: pointer;
+    opacity: .8;
+    transition: .3s;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+}
+.containerInput input {
+    background-color: transparent;
+    border: 0;
+    border-radius: 3px;
+    font-size: 20px;
+    color: #FFF;
+    outline: none;
+
+}
+
+.containerInput:hover {
+    opacity: 1;
+}
+
+
+.buttonSearch {
+    background-color: #333974;
+    color: #FFF;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: .8;
+    transition: .3s;
+    transition: transform 0.5s;
+}
+
+.buttonSearch:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(69,34,105,0.5 );
+    width: 450px;
+    padding: 15px;
+    margin: 34px;
+    border-radius: 15px;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);;
+
+
 }
