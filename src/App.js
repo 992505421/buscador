@@ -1,26 +1,36 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import React from "react";
-import { IMaskInput } from "react-imask";
+//import { IMaskInput } from "react-imask";
 import { FaSearch } from "react-icons/fa";
-
+import api from "./services/api";
 
 import './style.css';
 
 function App() {
 
-  const [input, setInput] = useState(' ')
+  const [input, setInput] = useState('')
 
-function handleSearch(){
-  alert("O Cep é" + input)
-}
+  async function handleSearch() {
+    if (input === '') {
+      alert("Preencha seu cep!")
+      return;
+    }
+    try {
+      const response = await api.get(`${input}/json`);
+      console.log(response.data)
+    } catch {
+      alert("Ops erro ao buscar o cep")
+    }
+    //01001000/json/
+  }
   return (
 
     <div className="container">
       <form className="container-form">
         <h1 className="title">Buscar CEP</h1>
         <div className="containerInput">
-          <IMaskInput mask="00000-000" placeholder="Digite o seu CEP..." value={input} 
-          onChange={(e) => setInput(e.target.value)}/>
+          <input  placeholder="Digite o seu CEP..." value={input}
+            onChange={(e) => setInput(e.target.value)} />
 
           <button className="buttonSearch" onClick={handleSearch}>
             <FaSearch className="buttonPesquisar" size={14} color="#fff" />
