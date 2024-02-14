@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-//import { IMaskInput } from "react-imask";
+import { IMaskInput } from "react-imask";
 import { FaSearch } from "react-icons/fa";
 import api from "./services/api";
 
@@ -9,6 +9,7 @@ import './style.css';
 function App() {
 
   const [input, setInput] = useState('')
+  const [cep, setCep] = useState({})
 
   async function handleSearch() {
     if (input === '') {
@@ -16,12 +17,14 @@ function App() {
       return;
     }
     try {
-      const response = await api.get(`${input}/json`);
-      console.log(response.data)
+      const response = await api.get(input);
+      setCep(response.data)
+      setInput("")
+
     } catch {
       alert("Ops erro ao buscar o cep")
+      setInput("")
     }
-    //01001000/json/
   }
   return (
 
@@ -29,7 +32,7 @@ function App() {
       <form className="container-form">
         <h1 className="title">Buscar CEP</h1>
         <div className="containerInput">
-          <input  placeholder="Digite o seu CEP..." value={input}
+          <IMaskInput mask="00000-000"  placeholder="Digite o seu CEP..." value={input}
             onChange={(e) => setInput(e.target.value)} />
 
           <button className="buttonSearch" onClick={handleSearch}>
@@ -39,11 +42,11 @@ function App() {
         </div>
       </form>
       <main className="main">
-        <h2>CEP: 76160000</h2>
-        <span>Rua teste algum</span>
-        <span>Complemento:</span>
-        <span> Vila</span>
-        <span>Sanclerlândia - GO</span>
+        <h2>CEP: {cep.cep}</h2>
+        <span>{cep.logradouro}</span>
+        <span>Complemento:{cep.complemento} </span>
+        <span> {cep.bairro}</span>
+        <span>{cep.localidade}</span>
       </main>
     </div>
   );
